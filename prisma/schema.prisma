@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+//提供的数据源，postgresql  地址就是环境变量.env文件当中的值
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Ticket {
+  id String @id @default(cuid())
+  createTime DateTime @default(now())
+  updateTime DateTime @updatedAt //自动更新为当前时间
+  title String 
+  content String @db.VarChar(1024)
+  status TicketStatus @default(OPEN)
+}
+
+enum TicketStatus{
+  OPEN
+  IN_PROGRESS
+  DONE
+}

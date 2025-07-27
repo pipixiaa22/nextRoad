@@ -1,7 +1,8 @@
-import { prisma } from "@/lib/prisma";
+import { PrismaClient } from "@/generated/prisma"
 
+const prisma = new PrismaClient()
 
-export const data = [
+export const tickets = [
     {
         id: '1',
         title: 'ticket 1',
@@ -21,5 +22,14 @@ export const data = [
         status: 'IN_PROGRESS' as const
     }
 ]
+
+const seed = async () => {
+
+    await prisma.ticket.createMany({
+        data:tickets
+    })
+}
+
+seed()
 
 
