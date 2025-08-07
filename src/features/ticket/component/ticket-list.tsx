@@ -7,7 +7,6 @@ export const TicketList =async () =>{
         <div className='flex-1 flex flex-col items-center gap-y-4 animate-fade-in-from-top'>
             {tickets.map((ticket) => (
                     <TicketItem ticket={ticket} key={ticket.id}/>
-            
             ))}
         </div>
     )

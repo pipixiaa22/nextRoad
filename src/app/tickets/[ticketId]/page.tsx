@@ -8,6 +8,9 @@ type TicketPageProps = {
     }
 }
 
+
+const number:number = 1
+
 const TicketPage =async ({params}: TicketPageProps) => {
     // console.log(1 === params.ticketId)
     const {ticketId} = await params
@@ -20,6 +23,7 @@ const TicketPage =async ({params}: TicketPageProps) => {
     if(!ticket){
          notFound() 
     }
+
 
     return (
         <div className="flex justify-center animate-fade-in-from-top">

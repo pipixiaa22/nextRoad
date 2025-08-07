@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
-import {ticketPath} from "@/paths";
-import { Button,buttonVariants } from "@/components/ui/button";
-import { LucideKanban } from "lucide-react";
 import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/themes/theme-provider";
-
+import { Toaster } from "@/components/ui/sonner"
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -36,6 +32,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Header/>
           <main className="py-24 px-8">{children}</main>
+            <Toaster expand/>
         </ThemeProvider>
       </body>
     </html>
